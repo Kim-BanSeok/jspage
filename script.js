@@ -1,1 +1,1 @@
-document.getElementsByClassName("d")[0].style.color="yellow";
+document.getElementsByClassName('d').style.color="yellow";
