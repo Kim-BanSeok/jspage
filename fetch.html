@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form id="myForm">
+    <input type="text" name="textField" placeholder="Enter Text">
+    <input type="checkbox" name="checkBox">
+    <input type="radio" name="radioButton" value="Option1">Option 1
+    <input type="radio" name="radioButton" value="Option2">Option 2
+    <button type="button" id="submitForm">Submit</button>
+    <button type="button" id="resetForm">Reset</button>
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      let myForm = document.getElementById("myForm");
+     
+      myForm.addEventListener("change", function(event){
+        console.log("chagne : ",event.target);
+      });
+
+      myForm.addEventListener("input", function(event){
+        console.log("input : ",event.target);
+      });
+
+      myForm.addEventListener("cut", function(event){
+        console.log("cut : ",event.target);
+      });
+
+      myForm.addEventListener("copy", function(event){
+        console.log("copy : ",event.target);
+      });
+
+      myForm.addEventListener("paste", function(event){
+        console.log("paste : ",event.target);  
+      });
+
+    //myForm.addEventListener("submit", function(event){
+    //  event.preventDefault();
+   //   console.log('myForm Submitted!', 'myForm Data:', new FormData(myForm));
+   // });
+
+    let submitForm = document.getElementById("submitForm");
+    submitForm.addEventListener("click", function(event){
+     let formData = new FormData(myForm);
+     let jsonObject = {};
+
+     // 폼 데이터를 JSON 객체로 변환
+     for (const [key, value] of formData.entries()) {
+        jsonObject[key] = value;
+     }
+
+     // AJAX 요청 전송
+     fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonObject)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    });
+
+    let resetForm = document.getElementById('resetForm');
+    resetForm.addEventListener('click', function() {
+      myForm.reset();
+    });
+
+  });
+
+ 
+  </script>
+
+</body>
+
+</html>
