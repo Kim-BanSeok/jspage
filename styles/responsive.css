@@ -1,0 +1,95 @@
+@import './reset.css';
+
+body{
+  overflow: auto;
+}
+header {background: #fff;
+  width: 100%;
+  display:flex;
+  justify-content:space-between;
+  padding: 16px 32px;
+  position: relative;
+  /*max-width: 1300px;
+  position: fixed;
+  top:0px;
+  left: 0px;*/
+  z-index: 2;
+  }
+  
+  header ul {
+    display: flex;
+    gap :10px;
+    z-index: 3;
+  }
+  
+  header ul li a:hover{color:red;}
+
+
+  #hamburger{
+    display: none;    
+    cursor: pointer;
+  }
+  #closeMenu{
+    display: none;  
+    cursor: pointer;    
+  }
+
+  .carousel{
+    max-width: 1300px;
+    height: 450px;
+    border: 1px solid #333;
+    margin-top: 40px;
+    
+  }
+
+  main {
+    /*background: #ccc;*/
+    display: flex;
+    flex-wrap: wrap;
+    gap:16px;
+    justify-content: center;
+    padding: 40px 0px;
+    margin: 40px 0px;
+    max-width: 1300px;
+  }
+  
+  main div{
+    width: 260px;
+    height: 300px;
+    background: #ddd;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+  }
+
+
+
+@media (max-width: 1400px) {
+ /* body {height: inherit;} */
+  header{max-width:1400px;}
+}
+@media (max-width: 960px) {
+  body {padding: 0 8px; overflow: auto;}
+}
+@media (max-width: 360px){
+  header{
+    position : fixed; 
+    top:0px;
+    left:0px;
+  }
+header ul {display: none;
+  /*display:flex;*/
+  flex-direction:column;
+  justify-content: center;
+  place-items:center;
+  position: absolute;
+  top:0;
+  left:0;
+  background: #add;
+  width:100%;
+  height: 100vh;
+
+}
+#hamburger {display:flex;}
+#closeMenu {display:flex;}
+}

@@ -4,8 +4,136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../script/responsive.js">
+  <link rel="stylesheet" href="../styles/responsive.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+ <style>
+   .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (max-width: 760px) {
+      .swiper-button-next {
+        right: 20px;
+        transform: rotate(90deg);
+      }
+
+      .swiper-button-prev {
+        left: 20px;
+        transform: rotate(90deg);
+      }
+    }
+ </style>
 <body>
+  <header>
+    <a href="../index.html">메인</a>
+    <p id="hamburger">햄버거 메뉴</p>
+    <ul id="verticalMenu">
+      <li><a href="./tag.html">태그</a></li>
+      <li><a href="./event.html">이벤트</a></li>
+      <li><a href="./components.html">컴포넌트</a></li>
+      <li><a href="./form.html">폼</a></li>
+      <li><a href="./responsive.html">반응형</a></li>
+      <li><a href="./openapi.html">OpenApi</a></li>
+      <li><button id="closeMenu">닫기</button></li>
+    </ul>
+  </header>
+  <div class="carousel">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+        <div class="swiper-slide">Resize me!</div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+  <main>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    
+  </main>
+  <script>
+    let menu = document.getElementById("hamburger");
+    let nav = document.getElementById("verticalMenu");
+    let closeMenu = document.getElementById("closeMenu");
+    menu.addEventListener("click",function(){
+      nav.style.display = "flex";
+    })
+    closeMenu.addEventListener("click",function(){
+      nav.style.display = "none";
+    })
+    
+
+    window.addEventListener("resize",function(){
+      if(window.innerWidth > 360){
+        nav.style.display = "flex";
+      }
+      else{
+        nav.style.display = "none";
+      }
+    })
+
+   /* var mql = window.metchmedia("screen and (min-width: 361px)");
+    mql.addListener(function(e){
+    if(e.matches){
+      nav.style.display = "flex";
+    } 
+    else {
+      nav.style.display = "none";
+    }
+  });*/
+
+
+  </script>
+
+<script>
+  var swiper = new Swiper('.swiper', {
+    slidesPerView: 3,
+    direction: getDirection(),
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      resize: function () {
+        swiper.changeDirection(getDirection());
+      },
+    },
+  });
+
+  function getDirection() {
+    var windowWidth = window.innerWidth;
+    var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+    return direction;
+  }
+</script>
+
   
 </body>
 </html>
