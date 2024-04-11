@@ -171,6 +171,7 @@
   ```js
   class Componentbread extends HTMLElement {
     constructor() {
+      super();
       const name = this.getAttribute('name');
       this.innerHTML = `<p>이름: ${name}</p>`;
     }

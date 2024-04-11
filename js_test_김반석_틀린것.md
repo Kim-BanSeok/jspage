@@ -23,7 +23,9 @@
   fetch("https://jsonplaceholder.typicode.com/posts")
     .then(response => response.json())
     .then(data => {
-      const result = data[0];/*Data에 대한 변수 선언을 안함.*/
+      console.log(data[0].title, data[0].body);/*Data[0]에 데이터를 바로 입력함.*/
+
+      const result = data[0];/*Data[0]에 대한 변수 선언을 안함.*/
      console.log(result.title, result.body); /*result에 값을 받아와서 표출)*/
     })
     .catch(error => console.error("error:", error));
